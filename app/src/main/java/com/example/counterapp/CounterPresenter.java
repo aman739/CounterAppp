@@ -1,6 +1,7 @@
 package com.example.counterapp;
 
-public class CounterPresenter implements CounterContracts.Presenter{
+public class CounterPresenter implements CounterContracts.Presenter
+{
     CounterModel counterModel;
     CounterContracts.CounterView counterView;
 
@@ -12,7 +13,6 @@ public class CounterPresenter implements CounterContracts.Presenter{
     public void increment() {
         counterModel.increment();
         counterView.updateCounter(counterModel.getCount());
-
 
     }
 
@@ -28,7 +28,11 @@ public class CounterPresenter implements CounterContracts.Presenter{
     }
 
 
-
-
-
+    @Override
+    public void green() {
+        if (counterModel.getCount() == 10) {
+            counterView.green();
+        }
+    }
 }
+

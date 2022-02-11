@@ -2,6 +2,7 @@ package com.example.counterapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,13 +14,12 @@ public class MainActivity extends AppCompatActivity implements CounterContracts.
     ActivityMainBinding binding;
     CounterPresenter presenter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        presenter = Injector.attachPresenter();
+        presenter = new CounterPresenter();
         presenter.attachView(this);
         initListener();
     }
@@ -46,5 +46,10 @@ public class MainActivity extends AppCompatActivity implements CounterContracts.
         binding.numberTv.setText(String.valueOf(count));
     }
 
+    @Override
+    public void green() {
+        binding.numberTv.setTextColor(Color.parseColor("#18EF18"));
 
+    }
 }
+
